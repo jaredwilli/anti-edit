@@ -1,0 +1,2 @@
+{"ts":1347071651272,"silentsave":true,"restoring":false,"patch":[[]],"length":0}
+{"contributors":[],"silentsave":false,"ts":1347071680959,"patch":[[{"diffs":[[1,"/**\n * GET editProfile\n */\n \nexports.editProfile = function(req, res){\n    res.render('editProfile', { \n      title: 'Edit Profile',\n      name: 'Edit Profile',\n      desc: \"\",\n      author: \"Jared Williams &amp; Antonio Fernandes\"\n    });\n};"]],"start1":0,"start2":0,"length1":0,"length2":242}]],"length":242,"saved":false}
