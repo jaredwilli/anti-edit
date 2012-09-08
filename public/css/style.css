@@ -1,0 +1,338 @@
+/*!
+ * Name: Anti-Code Editor
+ * Author: Jared WIlliams
+ */
+
+/* COLORS
+ * --------------------------
+ * color name: #hex value
+ 
+ 
+ */
+
+
+/**
+ * HTML5 ✰ Boilerplate
+ *
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ *
+ * Detailed information about this CSS: h5bp.com/css
+ *
+ * ==|== normalize ==========================================================
+ */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td { margin:0; padding:0; }
+table { border-collapse:collapse; border-spacing:0; }
+fieldset,img { border:0; }
+address,caption,cite,code,dfn,em,strong,th,var { font-style:normal; font-weight:normal; }
+ol,ul { list-style:none; }
+caption,th { text-align:left; }
+h1,h2,h3,h4,h5,h6 { font-size:100%; font-weight:normal; }
+q:before,q:after { content:''; }
+abbr,acronym { border:0; }
+
+/* =============================================================================
+   @font-face
+   ========================================================================== */
+   
+/* New bulletproof @font-face by fontspring:
+   http://www.fontspring.com/blog/further-hardening-of-the-bulletproof-syntax/ */
+@font-face {
+	font-family: 'MyFontFamily';
+	src: url('myfont-webfont.eot');							/* IE9 Compat Modes */
+	src: url('myfont-webfont.eot?iefix') format('eot'),		/* IE6-IE8 */
+		 url('myfont-webfont.woff') format('woff'),			/* Modern Browsers */
+		 url('myfont-webfont.ttf') format('truetype'),		/* Safari, Android, iOS */
+		 url('myfont-webfont.svg#svgFontName') format('svg'); /* Legacy iOS */
+}
+html { overflow: hidden; }
+body, select, input, textarea {
+  /* #444 looks better than black: twitter.com/H_FJ/statuses/11800719859 */
+  color: #444;
+  /* Set your base font here, to apply evenly */
+  /* font-family: Georgia, serif;  */
+  /* if using @font-face: */
+  /* font-family: MyFontFamily, Arial, serif; */
+}
+/*
+ * Consistent box sizing and appearance
+ */
+input[type="checkbox"], input[type="radio"] { box-sizing: border-box; padding: 0; }
+input[type="search"] { -webkit-appearance: textfield; -moz-box-sizing: content-box; -webkit-box-sizing: content-box; box-sizing: content-box; }
+input[type="search"]::-webkit-search-decoration { -webkit-appearance: none; }
+/*
+ * Remove inner padding and border in FF3/4: h5bp.com/l
+ */
+button::-moz-focus-inner, input::-moz-focus-inner { border: 0; padding: 0; }
+/*
+ * 1. Remove default vertical scrollbar in IE6/7/8/9
+ * 2. Allow only vertical resizing
+ */
+
+/* Colors for form validity */
+input:valid, textarea:valid {  }
+input:invalid, textarea:invalid { background-color: #f0dddd; }
+/* =============================================================================
+   Tables
+   ========================================================================== */
+table { border-collapse: collapse; border-spacing: 0; }
+td { vertical-align: top; }
+
+
+/* ==|== primary styles =====================================================
+   Author: Jared
+   ========================================================================== */
+
+body {
+  font-family: arial, helvetica, verdana;
+  font-size: 12px;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  cursor: default;
+}
+
+#container {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+}
+#main {
+  display: inline-block;
+  position: relative; 
+  width: 100%;
+}
+header {
+  background: #ccc;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  padding: 2px 5px;
+  z-index: 5;
+}
+header h1 {
+  color: #fff;
+  font-size: 14px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+section {
+  display: inline-block;
+  position: relative;
+  top: 40px;
+  padding: 0 20px;
+  margin: 0;
+  float: left;
+  z-index: 4;
+}
+
+#code {
+  width: 40%;
+  left: 0.10%;
+}
+
+#output {
+  border: 1px solid #ccc;
+  width: 50%;
+  height: 710px;
+  right: 0.10%;
+}
+
+section h4 {
+  color: #fff;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  font-size: 11px;
+  text-align: right;
+  font-weight: bold;
+  font-family: Arial, helvetica, verdana;
+  text-transform: uppercase;
+  display: block;
+  margin: 0;
+  padding: 2px 6px;
+  cursor: pointer;
+}
+#output h4 {
+  color: #999;
+  text-shadow: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+#html.editor h4 {
+  background: hsla(115, 82%, 50%, 0.42);
+  border-bottom: 1px solid hsla(113, 85%, 50%, 0.42);
+}
+#css.editor h4 {
+  background: hsla(5, 86%, 50%, 0.42);
+  border-bottom: 1px solid hsla(5, 89%, 50%, 0.42); 
+}
+#js.editor h4 {
+  background: hsla(240, 90%, 50%, 0.42);
+  border-bottom: 1px solid hsla(239, 90%, 50%, 0.42);
+}
+
+#code .editor {
+  border: 1px solid #eee;
+  display: block;
+  position: relative;
+  margin: 0 0 15px 0;
+  padding: 0;
+  width: 580px;
+  height: 225px;
+  overflow-y: hidden;
+}
+#code .editor:last-child {
+  margin-bottom: 0px;
+}
+#code .editor textarea {
+  overflow-x: hidden;
+}
+
+#code #html.editor {
+    border: 1px solid hsla(113, 85%, 50%, 0.42);
+}
+#code #css.editor {
+  border: 1px solid hsla(5, 89%, 50%, 0.42); 
+}
+#code #js.editor {
+  border: 1px solid hsla(239, 90%, 50%, 0.42);
+}
+
+#editor-tabs {
+  list-style: none;
+  position: absolute;
+  left: 20px;
+  top: 25px;
+}
+#editor-tabs li {
+  display: inline-block;
+  position: relative;
+  width: auto;
+}
+#editor-tabs li a {
+  color: #999;
+  font-size: 11px;
+  font-family: arial;
+  text-decoration: none;
+  display: inline-block;
+}
+
+footer {
+  background: #efefef;
+  border-top: 1px solid #ddd;
+  position: fixed;
+  bottom: -180px;
+  width: 100%;
+  height: 200px;
+  z-index: 5;
+}
+footer h1 {
+  color: #666;
+  text-align: center;
+  text-transform: uppercase;
+  display: block;
+  position: relative;
+  top: 2px;
+  cursor: pointer;
+}
+footer .settings {
+  display: inline-block;
+  position: relative;
+  margin: 10px;
+  padding: 10px;
+  height: 180px;
+  width: 80%;
+}
+
+
+.CodeMirror-scroll {
+  height: 205px;
+}
+
+iframe {
+  border: 0px;
+}
+
+
+
+.form {
+  display: block;
+  position: relative;
+  margin: 70px auto;
+  width: 30%;
+}
+
+.form h1 {
+  color: #666;
+  font-size: 22px;
+  font-weight: normal;
+  text-align: center;
+}
+
+
+/* ==|== media queries ======================================================
+   PLACEHOLDER Media Queries for Responsive Design.
+   These override the primary ('mobile first') styles
+   Modify as content requires.
+   ========================================================================== */
+
+@media only screen and (min-width: 480px) {
+  /* Style adjustments for viewports 480px and over go here */
+
+}
+
+@media only screen and (min-width: 768px) {
+  /* Style adjustments for viewports 768px and over go here */
+
+}
+
+
+
+/* ==|== non-semantic helper classes ========================================
+   Please define your styles before this section.
+   ========================================================================== */
+
+/* For image replacement */
+.ir { display: block; border: 0; text-indent: -999em; overflow: hidden; background-color: transparent; background-repeat: no-repeat; text-align: left; direction: ltr; }
+.ir br { display: none; }
+/* Hide from both screenreaders and browsers: h5bp.com/u */
+.hidden { display: none !important; visibility: hidden; }
+/* Hide only visually, but have it available for screenreaders: h5bp.com/v */
+.visuallyhidden { border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; }
+/* Extends the .visuallyhidden class to allow the element to be focusable when navigated to via the keyboard: h5bp.com/p */
+.visuallyhidden.focusable:active, .visuallyhidden.focusable:focus { clip: auto; height: auto; margin: 0; overflow: visible; position: static; width: auto; }
+/* Hide visually and from screenreaders, but maintain layout */
+.invisible { visibility: hidden; }
+/* Contain floats: h5bp.com/q */
+.clearfix:before, .clearfix:after { content: ""; display: table; }
+.clearfix:after { clear: both; }
+.clearfix { *zoom: 1; }
+
+
+/* ==|== print styles =======================================================
+   Print styles.
+   Inlined to avoid required HTTP connection: h5bp.com/r
+   ========================================================================== */
+
+@media print {
+  * { background: transparent !important; color: black !important; text-shadow: none !important; filter:none !important; -ms-filter: none !important; } /* Black prints faster: h5bp.com/s */
+  a, a:visited { text-decoration: underline; }
+  a[href]:after { content: " (" attr(href) ")"; }
+  abbr[title]:after { content: " (" attr(title) ")"; }
+  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }  /* Don't show links for images, or javascript/internal links */
+  pre, blockquote { border: 1px solid #999; page-break-inside: avoid; }
+  thead { display: table-header-group; } /* h5bp.com/t */
+  tr, img { page-break-inside: avoid; }
+  img { max-width: 100% !important; }
+  @page { margin: 0.5cm; }
+  p, h2, h3 { orphans: 3; widows: 3; }
+  h2, h3 { page-break-after: avoid; }
+}

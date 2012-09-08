@@ -1,0 +1,197 @@
+<!doctype html>
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+
+  <!-- Use the .htaccess and remove these lines to avoid edge case issues.
+       More info: h5bp.com/b/378 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title><%= title %></title>
+  <meta name="description" content="<%= desc %>">
+  <meta name="author" content="<%= author %>">
+
+  <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
+
+  <link rel="stylesheet" href="/css/codemirror.css">
+  <link rel="stylesheet" href="/css/style.css">
+  
+  <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
+
+  <!-- All JavaScript at the bottom, except this Modernizr build incl. Respond.js
+       Respond is a polyfill for min/max-width media queries. Modernizr enables HTML5 elements & feature detects; 
+       for optimal performance, create your own custom Modernizr build: www.modernizr.com/download/ -->
+  <script src="/js/modernizr-2.0.6.min.js"></script>
+</head>
+<body>
+
+  <div id="container">
+    <header>
+        <h1><%= title %></h1>
+
+    </header>
+
+    <div id="main" role="main">
+      <!--
+      <ul id="editor-tabs">
+        <li><a href="#">HTML</a></li>
+        <li><a href="#">CSS</a></li>
+        <li><a href="#js">JavaScript</a></li>
+        <li><a href="#show-all" class="enabled">Show All</a></li>
+      </ul>
+      -->
+      <section id="code">
+
+<div id="html" class="editor enabled">
+<h4>HTML</h4>
+
+<textarea id="html_textarea">
+<h1>Title Tag</h1>
+<h3>Sub-title</h3>
+
+<p>This is a paragraph. You can edit me and 
+  watch it output on the right what what!!</p>
+<a href="#">Click Me</a>
+
+<div class="content hidden">
+  <h2>This is hidden</h2>
+  <p>This should show when you click the link</p>
+</div>
+
+</textarea>
+</div>
+
+<div id="css" class="editor enabled">
+<h4>CSS</h4>
+
+<textarea id="css_textarea">
+body {
+  font-size: 16px;
+  font-family: Arial;
+}
+h1 {
+  color: #ccc;
+  font-size: 36px;
+  text-shadow: 2px 2px 5px #000;
+}
+h3 {
+  color: #666;
+  font-size: 20px;
+}
+p { margin: 10px 0 0; }
+a {
+  color: #00f;
+  text-decoration: none;
+}
+a:hover { color: #f00; }
+
+.content {
+  display: inline-block;
+  width: 100%;
+}
+.hidden {
+  display: none;
+}
+</textarea>
+</div>
+
+<div id="js" class="editor enabled">
+<h4>JavaScript</h4>
+
+<textarea id="js_textarea">
+$('a').click(function(e) {
+  e.preventDefault();
+
+  if ($('.content').hasClass('hidden')) {
+    $('.content').animate({ height: 'toggle'}, 'slow').removeClass('hidden');
+  } else {
+    $('.content').animate({ height: 'toggle'}, 'slow').addClass('hidden');
+  }
+});
+</textarea>
+
+</div>
+
+        <!--
+        <span class="style">Theme: </span>
+        <select id="theme">
+            <option "selected">default</option>
+            <option>ambiance</option>
+            <option>blackboard</option>
+            <option>cobalt</option>
+            <option>eclipse</option>
+            <option>elegant</option>
+            <option>erlang-dark</option>
+            <option>lesser-dark</option>
+            <option>monokai</option>
+            <option>neat</option>
+            <option>night</option>
+            <option>rubyblue</option>
+            <option>vibrant-ink</option>
+            <option>xq-dark</option>
+        </select>
+        -->
+      </section>
+
+      <section id="output">
+        <h4>Output</h4>
+      </section>
+    </div>
+
+    <footer>
+        <h1>Settings</h1>
+        <div class="settings">
+          <h2>Nothing here yet</h2>
+
+        </div>
+    </footer>
+
+  </div> <!--! end of #container -->
+
+
+  <!-- JavaScript at the bottom for fast page loading -->
+  <script>
+    var cssdeck_choosen_res = [],
+        cssdeck_test_global;
+  </script>
+  <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+  <!--<script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.2.min.js"><\/script>')</script>-->
+
+
+  <!-- scripts concatenated and minified via build script -->
+  <script defer src="/js/jquery-ui-1.8.21.min.js"></script>
+  <script defer src="/js/codemirror.js"></script>
+  <script defer src="/js/runmode.js"></script>
+  <script defer src="/js/main_mod.js"></script>
+  <script defer src="/js/xml.js"></script>
+  <script defer src="/js/css.js"></script>
+  <script defer src="/js/javascript.js"></script>
+  <script defer src="/js/jquery.codemirror.js"></script>
+  <script defer src="/js/script.js"></script>
+  <!-- end scripts -->
+
+
+  <!-- Asynchronous Google Analytics snippet. Change UA-XXXXX-X to be your site's ID.
+       mathiasbynens.be/notes/async-analytics-snippet -->
+  <script>
+    var _gaq=[['_setAccount','UA-22924724-1'],['_trackPageview'],['_trackPageLoadTime']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+  </script>
+
+  <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
+       chromium.org/developers/how-tos/chrome-frame-getting-started -->
+  <!--[if lt IE 7 ]>
+    <script defer src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+    <script defer>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+  <![endif]-->
+
+</body>
+</html>
