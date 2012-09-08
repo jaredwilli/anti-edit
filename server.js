@@ -31,7 +31,7 @@ app.configure('development', function(){
 
 var commonHead = {
     title: 'Dashboard',
-    name: 'Anti Editor',
+    name: 'Anti Edit',
       desc: "",
       author: "Jared Williams &amp; Antonio Fernandes"
 };
