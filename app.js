@@ -2,7 +2,12 @@
  * Module dependencies.
  */
 
-var express = require('express'), routes = require('./routes'), user = require('./routes/user'), http = require('http'), path = require('path'), _ = require("underscore");
+var express = require('express')
+  , routes = require('./routes')
+  , user = require('./routes/user')
+  , http = require('http')
+  , path = require('path')
+  , _ = require("underscore");
 
 var app = express();
 
@@ -14,7 +19,7 @@ app.configure(function(){
   app.use(express.logger('dev'));
   app.use(express.bodyParser());
   app.use(express.methodOverride());
-  app.use(express.cookieParser('Food4ThoughtHomie'));
+  app.use(express.cookieParser('your secret here'));
   app.use(express.session());
   app.use(app.router);
   app.use(express.static(path.join(__dirname, 'public')));
@@ -26,7 +31,7 @@ app.configure('development', function(){
 
 var commonHead = {
     title: 'Dashboard',
-    name: 'Anti Edit',
+    name: 'Anti Editor',
       desc: "",
       author: "Jared Williams &amp; Antonio Fernandes"
 };
